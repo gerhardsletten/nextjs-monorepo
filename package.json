@@ -1,0 +1,74 @@
+{
+  "name": "nextjs-monorepo",
+  "private": true,
+  "scripts": {
+    "dev::no": "yarn --cwd packages/webapp-no dev",
+    "build::no": "yarn --cwd packages/webapp-no build",
+    "start::no": "yarn --cwd packages/webapp-no start",
+    "dev::se": "yarn --cwd packages/webapp-se dev",
+    "build::se": "yarn --cwd packages/webapp-se build",
+    "start::se": "yarn --cwd packages/webapp-se start",
+    "lint": "eslint",
+    "format": "prettier --write \"**/*.js\""
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "babelMacros": {
+    "twin": {
+      "config": "./../../tailwind.config.js",
+      "preset": "styled-components"
+    }
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true
+  },
+  "eslintConfig": {
+    "root": true,
+    "parserOptions": {
+      "ecmaVersion": 2020,
+      "sourceType": "module",
+      "ecmaFeatures": {
+        "jsx": true
+      }
+    },
+    "env": {
+      "node": true,
+      "es6": true
+    },
+    "plugins": [
+      "prettier"
+    ],
+    "ignorePatterns": [
+      "node_modules/*",
+      ".next/*",
+      ".out/*"
+    ],
+    "extends": [
+      "prettier",
+      "eslint:recommended",
+      "plugin:react/recommended",
+      "plugin:react-hooks/recommended",
+      "plugin:jsx-a11y/recommended"
+    ],
+    "rules": {
+      "react/react-in-jsx-scope": "off",
+      "jsx-a11y/anchor-is-valid": "off",
+      "react/prop-types": "off"
+    },
+    "globals": {
+      "tw": true
+    }
+  },
+  "devDependencies": {
+    "eslint": "^7.25.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-react": "^7.23.2",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "prettier": "^2.2.1"
+  },
+  "license": "MIT"
+}
